@@ -19,9 +19,11 @@ public class Hero extends AnimatedThing{
 	public void update(double time, double xcam) {
 		if(time > 1) time = 0;
 		
-		if(ax > 0 && vx > 200) ax -= 0.02*vx ;
 		vx += ax * time;
 		x += vx * time;
+
+		if(vx > 400) ax -= 0.01*vx ;
+		else ax = 0;
 		
 		System.out.println(ax + ", " + vx + ", " + x);
 		

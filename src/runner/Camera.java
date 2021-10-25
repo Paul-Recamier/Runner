@@ -8,7 +8,7 @@ public class Camera {
 	private double ax;
 	
 	private double f = 3;
-	private double k = 4;
+	private double k = 10;
 
 	public	Camera(double x, double y) {
 		this.x = x;

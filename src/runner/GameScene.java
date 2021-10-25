@@ -36,7 +36,7 @@ public class GameScene extends Scene {
 	public GameScene(Group root, int height, int width) {
 		super(root, height, width);
 		
-		hero = new Hero(0, 240, 0, 0, 85, 100, cd + "\\src\\heros.png", 200);
+		hero = new Hero(0, 240, 0, 0, 85, 100, cd + "\\src\\heros.png", 400);
 		energyBall = new EnergyBall(800, 0, 536, 366, 29, 29, cd + "\\src\\heros.png", 400);
 		cactus = new Foe(1000, 250, 935, 474, 193, 276, cd + "\\src\\cactus.png", 400);
 		camera = new Camera(0, 0);
@@ -67,7 +67,7 @@ public class GameScene extends Scene {
 			}
 			if(event.getCode().equals(KeyCode.D)) {
 				//System.out.println("Right");
-				hero.setAx(100);
+				hero.setAx(50);
 			}
 		} );
 		
