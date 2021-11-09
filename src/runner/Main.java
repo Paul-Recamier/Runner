@@ -9,6 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Main extends Application{
 	
 	private double past;
@@ -26,12 +28,13 @@ public class Main extends Application{
 			public void handle(long now) {
 				double time = (now - past) * Math.pow(10,  -9);
 				gameScene.getHero().update(time, gameScene.getCam().getX());
-				gameScene.getEnergyBall().update(time);
+                ArrayList<EnergyBall> energyBalls = gameScene.getEnergyBalls();
+				for(EnergyBall energyBall : energyBalls) energyBall.update(time);
 				gameScene.getCactus().update(time, gameScene.getCam().getVx());
 				gameScene.getCam().update(time, gameScene.getHero().getX());
-				gameScene.update(time);
+				gameScene.update(time, root);
 				past = now;
-			}
+            }
         };
         
         timer.start();

@@ -5,6 +5,7 @@ import javafx.geometry.Rectangle2D;
 public class Hero extends AnimatedThing{
 	
 	private String attitude = "running"; // running, jumping up, jumping down, running & shoot, jumping up & shoot, jumping down & shoot
+	private Boolean accelerate = false;
 	
 	private int index = 0;
 	private int maximumIndex = 85 * 6;
@@ -12,20 +13,22 @@ public class Hero extends AnimatedThing{
 	private int duration = 0;
 	private int durationShoot = 0;
 
+	private double invincibility = 0;
+
 	public Hero(double posx, double posy, double x, double y, double width, double height, String filename, double vx) {
 		super(posx, posy, x, y, width, height, filename, vx);
 	}
 	
 	public void update(double time, double xcam) {
 		if(time > 1) time = 0;
-		
+
+		if(accelerate) ax = 1000 - vx;
+		else if(vx > 400) ax = - 0.5 * vx;
+		else ax = 0 ;
 		vx += ax * time;
 		x += vx * time;
 
-		if(vx > 400) ax -= 0.01*vx ;
-		else ax = 0;
-		
-		System.out.println(ax + ", " + vx + ", " + x);
+		//System.out.println(ax + ", " + vx + ", " + (x-xcam));
 		
 		duration += 1;
 		
@@ -62,7 +65,7 @@ public class Hero extends AnimatedThing{
 		
 		if(attitude.equals("running & shoot") || attitude.equals("jumping up & shoot") || attitude.equals("jumping down & shoot")) {
 			durationShoot += 1;
-			System.out.println(durationShoot + ", " + attitude);
+			//System.out.println(durationShoot + ", " + attitude);
 			if(durationShoot == 15) {
 				durationShoot = 0;
 				if(attitude.equals("running & shoot")) attitude = "running";
@@ -70,6 +73,19 @@ public class Hero extends AnimatedThing{
 				if(attitude.equals("jumping down & shoot")) attitude = "jumping down";
 			}
 		}
+		this.setHitbox(new Rectangle2D(x - xcam, y, width, height));
+
+		if(invincibility>0) {
+			invincibility -= time;
+		}
+	}
+
+	public Boolean isInvicible(){
+		return invincibility>0;
+	}
+
+	public void setInvincibility(double invincibility) {
+		this.invincibility = invincibility;
 	}
 
 	public void setAttitude(String attitude) {
@@ -78,5 +94,9 @@ public class Hero extends AnimatedThing{
 	
 	public String getAttitude() {
 		return attitude;
+	}
+
+	public void setAccelerate(Boolean accelerate) {
+		this.accelerate = accelerate;
 	}
 }

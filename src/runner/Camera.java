@@ -33,16 +33,16 @@ public class Camera {
 	
 	@Override
 	public String toString() {
-		return "x=" + x + ", y=" + y;
+		return "x=" + x + ", y=" + y +  ", vx=" + vx + ", ax=" + ax;
 	}
 	
 	public void update(double time, double xhero) {
-		if(time <1) {
-			ax = k * (xhero - x) - f * vx;
-			vx += ax * time;
-			x += vx * time;
-		}
-		
+		if(time > 1) time = 0;
+
+		ax = k * (xhero - x) - f * vx;
+		vx += ax * time;
+		x += vx * time;
+		//System.out.println(this + ", " + (xhero - x));
 	}
 	
 }
