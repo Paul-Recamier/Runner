@@ -5,7 +5,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 
-import javax.xml.stream.events.EntityReference;
 import java.util.ArrayList;
 
 public class GameScene extends Scene {
@@ -15,6 +14,7 @@ public class GameScene extends Scene {
 	private StaticThing right;
 	private Hero hero;
 	private Foe cactus;
+	private ArrayList<Foe> foes = new ArrayList();
 	private ArrayList<EnergyBall>  energyBalls = new ArrayList();
 	private String cd = System.getProperty("user.dir");
 	private Integer numberOfLives = 3;
@@ -32,9 +32,8 @@ public class GameScene extends Scene {
 		return energyBalls;
 	}
 
-
-	public Foe getCactus() {
-		return cactus;
+	public ArrayList<Foe> getFoes() {
+		return foes;
 	}
 	
 	public GameScene(Group root, int height, int width) {
@@ -42,7 +41,11 @@ public class GameScene extends Scene {
 		
 		hero = new Hero(0, 240, 0, 0, 85, 100, cd + "\\src\\heros.png", 200);
 		//energyBall = new EnergyBall(800, 0, 536, 366, 29, 29, cd + "\\src\\heros.png", 400);
-		cactus = new Foe(800, 290, 0, 0, 240, 305, cd + "\\src\\AnimationCactus.png", 400);
+		//cactus = new Foe(800, 290, 0, 0, 240, 305, cd + "\\src\\AnimationCactus.png", 400);
+		for(int i=0; i < 100; i++) {
+			Foe foe = new Foe(Math.random()*40000, 290, 0, 0, 240, 305, cd + "\\src\\AnimationCactus.png", 400);
+			foes.add(foe);
+		}
 		camera = new Camera(0, 0);
         left = new StaticThing(0, 0, 500, 0, 300, 400, cd + "\\src\\desert.png");
         right = new StaticThing(300, 0, 0, 0, 800, 400, cd + "\\src\\desert.png");
@@ -50,7 +53,7 @@ public class GameScene extends Scene {
         root.getChildren().add(left.getSprite());
         root.getChildren().add(right.getSprite());
         root.getChildren().add(hero.getSprite());
-        root.getChildren().add(cactus.getSprite());
+        for(Foe foe : foes) root.getChildren().add(foe.getSprite());
 
 		displaylife(root);
 
@@ -85,8 +88,6 @@ public class GameScene extends Scene {
 			energyBall.setX(hero.getX() - camera.getX() + 85);
 			energyBall.setY(hero.getY() + 38);
 		});
-		
-        
 	}
 
 	public void displaylife(Group root){
@@ -106,22 +107,31 @@ public class GameScene extends Scene {
 		left.getSprite().setViewport(new Rectangle2D(x, 0, 800 - x, 400));
 		right.getSprite().setX(800 - x);
 
-		if (!hero.isInvicible() && hero.getHitbox().intersects(cactus.getHitbox())) {
-			System.out.println("Collision");
-			hero.setInvincibility(2.5);
-			numberOfLives -= 1;
-			displaylife(root);
-		}
-
-		for(EnergyBall energyBall : energyBalls) {
-			if (energyBall.getHitbox().intersects(cactus.getHitbox())) {
-				System.out.println("Touched");
-				cactus.setAlive(false);
-				cactus.setHitbox(null);
-				energyBall.getSprite().setViewport(new Rectangle2D(0,0,1,1));
+		for(Foe foe : foes) {
+			if (!hero.isInvicible() && hero.getHitbox().intersects(foe.getHitbox())) {
+				System.out.println("Collision");
+				hero.setInvincibility(2.5);
+				numberOfLives -= 1;
+				displaylife(root);
 			}
 		}
 
+		ArrayList<Integer> ballsToRemove = new ArrayList<>();
+		for(EnergyBall energyBall : energyBalls) {
+			for(Foe foe : foes) {
+				if (energyBall.getHitbox().intersects(foe.getHitbox())) {
+					System.out.println("Touched");
+					foe.setAlive(false);
+					foe.setHitbox(null);
+					ballsToRemove.add(energyBalls.indexOf(energyBall));
+					energyBall.getSprite().setViewport(new Rectangle2D(0, 0, 1, 1));
+				}
+			}
+			if (energyBall.getX() > 900) ballsToRemove.add(energyBalls.indexOf(energyBall));
+		}
+		for(Integer i : ballsToRemove) {
+			energyBalls.get(i).getSprite().setViewport(new Rectangle2D(0,0,1,1));
+			energyBalls.remove((int) i);
+		}
 	}
-
 }

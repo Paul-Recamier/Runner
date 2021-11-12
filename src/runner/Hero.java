@@ -27,7 +27,7 @@ public class Hero extends AnimatedThing{
 		else ax = 0 ;
 		vx += ax * time;
 		x += vx * time;
-
+		System.out.println(x);
 		//System.out.println(ax + ", " + vx + ", " + (x-xcam));
 		
 		duration += 1;
@@ -35,12 +35,13 @@ public class Hero extends AnimatedThing{
 		if( duration == 5) {
 			index += offset;
 			duration = 0;
-			if(attitude.equals("running")) sprite.setViewport(new Rectangle2D(index % maximumIndex, 0, offset, 100));
-			if(attitude.equals("jumping up")) sprite.setViewport(new Rectangle2D(0, 160, 85, 100));
-			if(attitude.equals("jumping down")) sprite.setViewport(new Rectangle2D(85, 160, 85, 100));
-			if(attitude.equals("running & shoot")) sprite.setViewport(new Rectangle2D(index % maximumIndex, 326, offset, 100));
-			if(attitude.equals("jumping up & shoot")) sprite.setViewport(new Rectangle2D(0, 490, 85, 100));
-			if(attitude.equals("jumping down & shoot")) sprite.setViewport(new Rectangle2D(85, 490, 85, 100));
+			if (attitude.equals("running")) sprite.setViewport(new Rectangle2D(index % maximumIndex, 0, offset, 100));
+			if (attitude.equals("jumping up")) sprite.setViewport(new Rectangle2D(0, 160, 85, 100));
+			if (attitude.equals("jumping down")) sprite.setViewport(new Rectangle2D(85, 160, 85, 100));
+			if (attitude.equals("running & shoot"))
+				sprite.setViewport(new Rectangle2D(index % maximumIndex, 326, offset, 100));
+			if (attitude.equals("jumping up & shoot")) sprite.setViewport(new Rectangle2D(0, 490, 85, 100));
+			if (attitude.equals("jumping down & shoot")) sprite.setViewport(new Rectangle2D(85, 490, 85, 100));
 		}
 		sprite.setX(x - xcam);
 		

@@ -30,7 +30,8 @@ public class Main extends Application{
 				gameScene.getHero().update(time, gameScene.getCam().getX());
                 ArrayList<EnergyBall> energyBalls = gameScene.getEnergyBalls();
 				for(EnergyBall energyBall : energyBalls) energyBall.update(time);
-				gameScene.getCactus().update(time, gameScene.getCam().getVx());
+                ArrayList<Foe> foes = gameScene.getFoes();
+				for(Foe foe : foes) foe.update(time, gameScene.getCam().getVx());
 				gameScene.getCam().update(time, gameScene.getHero().getX());
 				gameScene.update(time, root);
 				past = now;
