@@ -14,6 +14,7 @@ public class Hero extends AnimatedThing{
 	private int durationShoot = 0;
 
 	private double invincibility = 0;
+	private double flashing = 0;
 
 	public Hero(double posx, double posy, double x, double y, double width, double height, String filename, double vx) {
 		super(posx, posy, x, y, width, height, filename, vx);
@@ -27,7 +28,6 @@ public class Hero extends AnimatedThing{
 		else ax = 0 ;
 		vx += ax * time;
 		x += vx * time;
-		System.out.println(x);
 		//System.out.println(ax + ", " + vx + ", " + (x-xcam));
 		
 		duration += 1;
@@ -38,8 +38,7 @@ public class Hero extends AnimatedThing{
 			if (attitude.equals("running")) sprite.setViewport(new Rectangle2D(index % maximumIndex, 0, offset, 100));
 			if (attitude.equals("jumping up")) sprite.setViewport(new Rectangle2D(0, 160, 85, 100));
 			if (attitude.equals("jumping down")) sprite.setViewport(new Rectangle2D(85, 160, 85, 100));
-			if (attitude.equals("running & shoot"))
-				sprite.setViewport(new Rectangle2D(index % maximumIndex, 326, offset, 100));
+			if (attitude.equals("running & shoot")) sprite.setViewport(new Rectangle2D(index % maximumIndex, 326, offset, 100));
 			if (attitude.equals("jumping up & shoot")) sprite.setViewport(new Rectangle2D(0, 490, 85, 100));
 			if (attitude.equals("jumping down & shoot")) sprite.setViewport(new Rectangle2D(85, 490, 85, 100));
 		}
@@ -78,25 +77,23 @@ public class Hero extends AnimatedThing{
 
 		if(invincibility>0) {
 			invincibility -= time;
+			flashing = (flashing + 1) % 3;
+			if(flashing == 0) sprite.setViewport(new Rectangle2D(0,0,1,1));
 		}
 	}
 
 	public Boolean isInvicible(){
 		return invincibility>0;
 	}
-
 	public void setInvincibility(double invincibility) {
 		this.invincibility = invincibility;
 	}
-
 	public void setAttitude(String attitude) {
 		this.attitude = attitude;
 	}
-	
 	public String getAttitude() {
 		return attitude;
 	}
-
 	public void setAccelerate(Boolean accelerate) {
 		this.accelerate = accelerate;
 	}

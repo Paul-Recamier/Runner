@@ -13,9 +13,9 @@ public class GameScene extends Scene {
 	private StaticThing left;
 	private StaticThing right;
 	private Hero hero;
-	private Foe cactus;
 	private ArrayList<Foe> foes = new ArrayList();
 	private ArrayList<EnergyBall>  energyBalls = new ArrayList();
+	private ArrayList<StaticThing> hearts = new ArrayList<>();
 	private String cd = System.getProperty("user.dir");
 	private Integer numberOfLives = 3;
 	private double x = 500;
@@ -40,8 +40,6 @@ public class GameScene extends Scene {
 		super(root, height, width);
 		
 		hero = new Hero(0, 240, 0, 0, 85, 100, cd + "\\src\\heros.png", 200);
-		//energyBall = new EnergyBall(800, 0, 536, 366, 29, 29, cd + "\\src\\heros.png", 400);
-		//cactus = new Foe(800, 290, 0, 0, 240, 305, cd + "\\src\\AnimationCactus.png", 400);
 		for(int i=0; i < 100; i++) {
 			Foe foe = new Foe(Math.random()*40000, 290, 0, 0, 240, 305, cd + "\\src\\AnimationCactus.png", 400);
 			foes.add(foe);
@@ -49,13 +47,16 @@ public class GameScene extends Scene {
 		camera = new Camera(0, 0);
         left = new StaticThing(0, 0, 500, 0, 300, 400, cd + "\\src\\desert.png");
         right = new StaticThing(300, 0, 0, 0, 800, 400, cd + "\\src\\desert.png");
-        
+		for(int i = 0; i<numberOfLives; i++) {
+			StaticThing heart = new StaticThing(16 + i*40, 12, 0, 0, 32, 32, cd + "\\src\\hearth.png");
+			hearts.add(heart);
+		}
+
         root.getChildren().add(left.getSprite());
         root.getChildren().add(right.getSprite());
         root.getChildren().add(hero.getSprite());
         for(Foe foe : foes) root.getChildren().add(foe.getSprite());
-
-		displaylife(root);
+		for(StaticThing heart : hearts) root.getChildren().add(heart.getSprite());
 
 		this.setOnKeyPressed( event -> {
 			if(event.getCode().equals(KeyCode.SPACE) && (hero.getAttitude().equals("running") || hero.getAttitude().equals("running & shoot"))) {
@@ -90,17 +91,6 @@ public class GameScene extends Scene {
 		});
 	}
 
-	public void displaylife(Group root){
-		for(int i = 0; i<numberOfLives; i++) {
-			StaticThing heart = new StaticThing(16 + i*40, 12, 0, 0, 32, 32, cd + "\\src\\hearth.png");
-			root.getChildren().add(heart.getSprite());
-		}
-		for(int j = 2; j>=numberOfLives; j--) {
-			StaticThing emptyheart = new StaticThing(16 + j*40, 12, 0, 0, 32, 32, cd + "\\src\\emptyhearth.png");
-			root.getChildren().add(emptyheart.getSprite());
-		}
-	}
-
 	public void update(double time, Group root) {
 		if(time > 1) time = 0;
 		x = (x + camera.getVx() * time) % 800;
@@ -108,11 +98,11 @@ public class GameScene extends Scene {
 		right.getSprite().setX(800 - x);
 
 		for(Foe foe : foes) {
-			if (!hero.isInvicible() && hero.getHitbox().intersects(foe.getHitbox())) {
+			if (!hero.isInvicible() && hero.getHitbox().intersects(foe.getHitbox()) && numberOfLives > 0) {
 				System.out.println("Collision");
 				hero.setInvincibility(2.5);
 				numberOfLives -= 1;
-				displaylife(root);
+				hearts.get(numberOfLives).getSprite().setViewport(new Rectangle2D(32, 0 , 32, 32));
 			}
 		}
 
