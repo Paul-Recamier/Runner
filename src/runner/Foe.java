@@ -6,16 +6,16 @@ import java.util.ArrayList;
 
 public class Foe extends AnimatedThing{
 
-	private double index = 0;
-	private double frameDuration = 0;
-	private double maximumIndex = 128 * 6;
-	private Boolean deathAnimation = false;
-	private double deathIndex = 0;
-	private double deathMaximumIndex = 256 * 10;
 	private Boolean toRemove = false;
 
 	public Foe(double posx, double posy, double x, double y, double width, double height, String filename, double vx) {
 		super(posx, posy, x, y, width, height, filename, vx);
+
+		frameDuration = 0;
+		index = 0;
+		maximumIndex = 128 * 6;
+		deathIndex = 0;
+		deathMaximumIndex = 256 * 10;
 	}
 
 	
@@ -49,9 +49,6 @@ public class Foe extends AnimatedThing{
 		}
 	}
 
-	public void setDeathAnimation(Boolean deathAnimation) {
-		this.deathAnimation = deathAnimation;
-	}
 
 	public Boolean getToRemove() {
 		return toRemove;

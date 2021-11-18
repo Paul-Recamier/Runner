@@ -7,11 +7,6 @@ import javafx.scene.image.ImageView;
 public abstract class AnimatedThing {
 	
 	protected double x;
-
-	public void setVx(double vx) {
-		this.vx = vx;
-	}
-
 	protected double vx = 1;
 	protected double ax = 0;
 	protected double y;
@@ -22,6 +17,14 @@ public abstract class AnimatedThing {
 	protected double height;
 	protected ImageView sprite;
 	protected Rectangle2D hitbox;
+
+	protected Boolean deathAnimation = false;
+
+	protected double frameDuration;
+	protected double index;
+	protected double maximumIndex;
+	protected double deathIndex;
+	protected double deathMaximumIndex;
 	
 	public AnimatedThing(double posx, double posy, double x, double y, double width, double height, String filename, double vx){
 		this.x = posx;
@@ -42,36 +45,12 @@ public abstract class AnimatedThing {
 		return sprite;
 	}
 
-	public double getAx() {
-		return ax;
-	}
-
-	public void setAx(double ax) {
-		this.ax = ax;
-	}
-
 	public void setAy(double ay) {
 		this.ay = ay;
 	}
 
-	public double getVx() {
-		return vx;
-	}
-
 	public double getX() {
 		return x;
-	}
-	
-	public void setX(double x) {
-		this.x = x;
-	}
-	
-	public double getY() {
-		return y;
-	}
-	
-	public void setY(double y) {
-		this.y = y;
 	}
 
 	public Rectangle2D getHitbox() {
@@ -82,9 +61,12 @@ public abstract class AnimatedThing {
 		this.hitbox = hitbox;
 	}
 
-	public void setSprite(ImageView sprite) {
-		this.sprite = sprite;
+	public void setDeathAnimation(Boolean deathAnimation) {
+		this.deathAnimation = deathAnimation;
 	}
 
+	public Boolean getDeathAnimation() {
+		return deathAnimation;
+	}
 
 }
