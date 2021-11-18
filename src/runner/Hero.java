@@ -70,7 +70,7 @@ public class Hero extends AnimatedThing{
 		if(attitude.equals("running & shoot")) {
 			nextAttitude = "running";
 			if(frameDuration == 0 && (index / offset) == 4) {
-				EnergyBall energyBall = new EnergyBall(x - xcam + 85, y + 60, 0, 256, 32, 32, System.getProperty("user.dir") + "\\src\\Mage.png", 200);
+				EnergyBall energyBall = new EnergyBall(x - xcam + 85, y + 60, 0, 256, 32, 32, System.getProperty("user.dir") + "\\img\\Mage.png", 200);
 				energyBalls.add(energyBall);
 				root.getChildren().add(energyBall.getSprite());
 			}

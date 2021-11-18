@@ -27,13 +27,13 @@ public class Main extends Application{
 			@Override
 			public void handle(long now) {
 				double time = (now - past) * Math.pow(10,  -9);
-				gameScene.getHero().update(time, gameScene.getCam().getX());
                 ArrayList<EnergyBall> energyBalls = gameScene.getEnergyBalls();
+				gameScene.getHero().update(time, gameScene.getCam().getX(), energyBalls, root);
 				for(EnergyBall energyBall : energyBalls) energyBall.update(time);
                 ArrayList<Foe> foes = gameScene.getFoes();
 				for(Foe foe : foes) foe.update(time, gameScene.getCam().getVx(), gameScene.getHero().getX() - gameScene.getCam().getX());
 				gameScene.getCam().update(time, gameScene.getHero().getX());
-				gameScene.update(time, root);
+				gameScene.update(time);
 				past = now;
             }
         };

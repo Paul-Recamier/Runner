@@ -41,23 +41,23 @@ public class GameScene extends Scene {
 	public GameScene(Group root, int width, int height) {
 		super(root, width, height);
 
-		hero = new Hero(0, 250, 0, 0, 128, 128, cd + "\\src\\Mage.png", 400);
+		hero = new Hero(0, 250, 0, 0, 128, 128, cd + "\\img\\Mage.png", 400);
 		for(int i=0; i < 1; i++) {
-			Foe foe = new Foe(Math.random()*0 + 1000, 250, 2432, 384, 128, 128, cd + "\\Foe.png", 400);
+			Foe foe = new Foe(Math.random()*0 + 1000, 250, 2432, 384, 128, 128, cd + "\\img\\Foe.png", 400);
 			foes.add(foe);
 		}
 		camera = new Camera(0, 0);
 
-		skyLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\Sky.png"); background.add(skyLeft);
-		skyRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\Sky.png"); background.add(skyRight);
-		bgDecorLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\BG_Decor.png"); background.add(bgDecorLeft);
-		bgDecorRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\BG_Decor.png"); background.add(bgDecorRight);
-		mdLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\Middle_Decor.png"); background.add(mdLeft);
-		mdRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\Middle_Decor.png"); background.add(mdRight);
-		fgLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\Foreground.png"); background.add(fgLeft);
-		fgRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\Foreground.png"); background.add(fgRight);
-		groundLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\Ground.png");
-		groundRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\Ground.png");
+		skyLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\Sky.png"); background.add(skyLeft);
+		skyRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\Sky.png"); background.add(skyRight);
+		bgDecorLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\BG_Decor.png"); background.add(bgDecorLeft);
+		bgDecorRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\BG_Decor.png"); background.add(bgDecorRight);
+		mdLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\Middle_Decor.png"); background.add(mdLeft);
+		mdRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\Middle_Decor.png"); background.add(mdRight);
+		fgLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\Foreground.png"); background.add(fgLeft);
+		fgRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\Foreground.png"); background.add(fgRight);
+		groundLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\Ground.png");
+		groundRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\Ground.png");
 
 
 		for(int i = 0; i<numberOfLives; i++) {

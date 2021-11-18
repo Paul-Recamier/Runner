@@ -23,6 +23,7 @@ public class Foe extends AnimatedThing{
 		x -= vxCam * time;
 		if(deathAnimation){
 			frameDuration += 1;
+			hitbox = null;
 			if(frameDuration == 5){
 				frameDuration = 0;
 				if(deathIndex == deathMaximumIndex) toRemove = true;
@@ -38,14 +39,12 @@ public class Foe extends AnimatedThing{
 			if(frameDuration == 5) {
 				index = (index + 128) % maximumIndex;
 				frameDuration = 0;
-				System.out.println(x - xhero);
 				if((x - xhero) < 100 && (x - xhero) > -100) sprite.setViewport(new Rectangle2D(2432 - index, 0, 128, 128));
 				else sprite.setViewport(new Rectangle2D(2432 - index, 384, 128, 128));
 			}
 
 			hitbox = new Rectangle2D(x + 72,y + 62,43,50);
 
-			System.out.println(x);
 			if(x < -100) toRemove = true;
 		}
 	}
