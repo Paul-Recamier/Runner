@@ -1,17 +1,22 @@
 package runner;
 
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
+
+import java.util.ArrayList;
 
 public class Hero extends AnimatedThing{
-	
-	private String attitude = "running"; // running, jumping up, jumping down, running & shoot, jumping up & shoot, jumping down & shoot
+
+	private String attitude = "running"; // running, jumping up, jumping down, running & shoot
+	private String nextAttitude = "running";
 	private Boolean accelerate = false;
 	
-	private int index = 0;
-	private int maximumIndex = 85 * 6;
-	private double offset = 85;
-	private int duration = 0;
-	private int durationShoot = 0;
+	private double index = 0;
+	private double maximumIndex = 128 * 8;
+	private double jumpIndex = 0;
+	private double maximumJumpIndex = 128 * 11;
+	private double offset = 128;
+	private int frameDuration = 0;
 
 	private double invincibility = 0;
 	private double flashing = 0;
@@ -20,7 +25,7 @@ public class Hero extends AnimatedThing{
 		super(posx, posy, x, y, width, height, filename, vx);
 	}
 	
-	public void update(double time, double xcam) {
+	public void update(double time, double xcam, ArrayList<EnergyBall> energyBalls, Group root) {
 		if(time > 1) time = 0;
 
 		if(accelerate) ax = 1000 - vx;
@@ -30,59 +35,57 @@ public class Hero extends AnimatedThing{
 		x += vx * time;
 		//System.out.println(ax + ", " + vx + ", " + (x-xcam));
 		
-		duration += 1;
-		
-		if( duration == 5) {
-			index += offset;
-			duration = 0;
-			if (attitude.equals("running")) sprite.setViewport(new Rectangle2D(index % maximumIndex, 0, offset, 100));
-			if (attitude.equals("jumping up")) sprite.setViewport(new Rectangle2D(0, 160, 85, 100));
-			if (attitude.equals("jumping down")) sprite.setViewport(new Rectangle2D(85, 160, 85, 100));
-			if (attitude.equals("running & shoot")) sprite.setViewport(new Rectangle2D(index % maximumIndex, 326, offset, 100));
-			if (attitude.equals("jumping up & shoot")) sprite.setViewport(new Rectangle2D(0, 490, 85, 100));
-			if (attitude.equals("jumping down & shoot")) sprite.setViewport(new Rectangle2D(85, 490, 85, 100));
+		frameDuration += 1;
+
+		if( frameDuration == 4) {
+			if(attitude.equals("running") || attitude.equals("running & shoot")) index = (index + offset) % maximumIndex;
+			if((attitude.equals("jumping up") || attitude.equals("jumping down")) && jumpIndex < maximumJumpIndex) jumpIndex += offset;
+			if(index == 0 && (attitude.equals("running") || attitude.equals("running & shoot"))) attitude = nextAttitude;
+			frameDuration = 0;
+			if (attitude.equals("running")) sprite.setViewport(new Rectangle2D(index, 416, 128, 128));
+			if (attitude.equals("jumping up") || attitude.equals("jumping down")) sprite.setViewport(new Rectangle2D(jumpIndex, 288, 128, 128));
+			if (attitude.equals("running & shoot")) sprite.setViewport(new Rectangle2D(index, 544, 128, 128));
 		}
 		sprite.setX(x - xcam);
 		
 		if(attitude.equals("jumping up") && vy < 0) attitude = "jumping down";
-		if(attitude.equals("jumping up & shoot") && vy < 0) attitude = "jumping down & shoot";
-		
-		
-		if(attitude.equals("jumping up") || attitude.equals("jumping down") || attitude.equals("jumping up & shoot") || attitude.equals("jumping down & shoot")) {
-			ay += -9.81 * 1200 * time;
+
+		if(attitude.equals("jumping up") || attitude.equals("jumping down")) {
+			ay -= 12000 * time;
 			vy += ay * time;
 			y -= vy * time;
 		}
-		if(y > 240) {
-			y = 240;
+		if(y > 250) {
+			y = 250;
 			vy = 0;
 			ay = 0;
-			if( attitude.equals("jumping down")) attitude = "running"; 
-			if( attitude.equals("jumping down & shoot")) attitude = "running & shoot"; 
+			sprite.setViewport(new Rectangle2D(128 * 11, 288, 128, 128));
+			index = 0;
+			jumpIndex = 0;
+			if( attitude.equals("jumping down")) attitude = nextAttitude;
 		}
 		
 		sprite.setY(y);
 		
-		if(attitude.equals("running & shoot") || attitude.equals("jumping up & shoot") || attitude.equals("jumping down & shoot")) {
-			durationShoot += 1;
-			//System.out.println(durationShoot + ", " + attitude);
-			if(durationShoot == 15) {
-				durationShoot = 0;
-				if(attitude.equals("running & shoot")) attitude = "running";
-				if(attitude.equals("jumping up & shoot")) attitude = "jumping up";
-				if(attitude.equals("jumping down & shoot")) attitude = "jumping down";
+		if(attitude.equals("running & shoot")) {
+			nextAttitude = "running";
+			if(frameDuration == 0 && (index / offset) == 4) {
+				EnergyBall energyBall = new EnergyBall(x - xcam + 85, y + 60, 0, 256, 32, 32, System.getProperty("user.dir") + "\\src\\Mage.png", 200);
+				energyBalls.add(energyBall);
+				root.getChildren().add(energyBall.getSprite());
 			}
 		}
-		this.setHitbox(new Rectangle2D(x - xcam, y, width, height));
+
+		this.setHitbox(new Rectangle2D(x - xcam + 27, y + 55, 35, 50));
 
 		if(invincibility>0) {
 			invincibility -= time;
 			flashing = (flashing + 1) % 3;
-			if(flashing == 0) sprite.setViewport(new Rectangle2D(0,0,1,1));
+			//if(flashing == 0) sprite.setViewport(new Rectangle2D(0,0,1,1));
 		}
 	}
 
-	public Boolean isInvicible(){
+	public Boolean isInvisible(){
 		return invincibility>0;
 	}
 	public void setInvincibility(double invincibility) {
@@ -90,6 +93,9 @@ public class Hero extends AnimatedThing{
 	}
 	public void setAttitude(String attitude) {
 		this.attitude = attitude;
+	}
+	public void setNextAttitude(String nextAttitude) {
+		this.nextAttitude = nextAttitude;
 	}
 	public String getAttitude() {
 		return attitude;

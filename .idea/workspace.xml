@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d909b49d-5021-43ec-932b-c531865e61db" name="Changes" comment="Changement des sprites">
+      <change beforePath="$PROJECT_DIR$/src/runner/EnergyBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/EnergyBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/Foe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Foe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="203ULg51AptTX36f3IAibX6Zg5L" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.project" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
+  </component>
+  <component name="RunManager">
+    <configuration name="controls" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="MAIN_CLASS_NAME" value="runner.Main" />
+      <module name="Runner" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\\Program Files\\JavaFX\\javafx-sdk-17.0.0.1\\lib&quot; --add-modules javafx.controls" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d909b49d-5021-43ec-932b-c531865e61db" name="Changes" comment="" />
+      <created>1635272717024</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635272717024</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Enemy and collisions">
+      <created>1636474445093</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1636474445093</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Enemies and Object Deletion">
+      <created>1636724874025</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636724874025</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Invincibility Animation &amp; reworked Health System">
+      <created>1636726366035</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636726366035</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changement du background et hero">
+      <created>1636999242790</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636999242790</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changement des sprites">
+      <created>1637245068324</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637245068324</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Enemy and collisions" />
+    <MESSAGE value="Enemies and Object Deletion" />
+    <MESSAGE value="Invincibility Animation &amp; reworked Health System" />
+    <MESSAGE value="Changement du background et hero" />
+    <MESSAGE value="Changement des sprites" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changement des sprites" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.ConcurrentModificationException" package="java.util" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

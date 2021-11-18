@@ -31,7 +31,7 @@ public class Main extends Application{
                 ArrayList<EnergyBall> energyBalls = gameScene.getEnergyBalls();
 				for(EnergyBall energyBall : energyBalls) energyBall.update(time);
                 ArrayList<Foe> foes = gameScene.getFoes();
-				for(Foe foe : foes) foe.update(time, gameScene.getCam().getVx());
+				for(Foe foe : foes) foe.update(time, gameScene.getCam().getVx(), gameScene.getHero().getX() - gameScene.getCam().getX());
 				gameScene.getCam().update(time, gameScene.getHero().getX());
 				gameScene.update(time, root);
 				past = now;
