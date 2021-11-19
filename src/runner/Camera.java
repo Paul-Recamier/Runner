@@ -18,9 +18,6 @@ public class Camera {
 	public double getX() {
 		return x;
 	}
-	public double getY() {
-		return y;
-	}
 	public double getVx() {
 		return vx;
 	}
@@ -30,13 +27,19 @@ public class Camera {
 		return "x=" + x + ", y=" + y +  ", vx=" + vx + ", ax=" + ax;
 	}
 	
-	public void update(double time, double xhero) {
+	public void update(double time, double xhero, Boolean deathAnimation) {
 		if(time > 1) time = 0;
 
-		ax = k * (xhero - x) - f * vx;
-		vx += ax * time;
-		x += vx * time;
-		//System.out.println(this + ", " + (xhero - x));
+		if(deathAnimation) {
+			ax = k * (-200 + xhero - x) - f * vx;
+			vx += ax * time;
+			x += vx * time;
+		}
+		else {
+			ax = k * (xhero - x) - f * vx;
+			vx += ax * time;
+			x += vx * time;
+			//System.out.println(this + ", " + (xhero - x));
+		}
 	}
-	
 }

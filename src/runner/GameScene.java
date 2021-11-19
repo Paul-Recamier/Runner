@@ -18,50 +18,35 @@ public class GameScene extends Scene {
 	private ArrayList<EnergyBall>  energyBalls = new ArrayList();
 	private ArrayList<StaticThing> hearts = new ArrayList();
 	private String cd = System.getProperty("user.dir");
-	private Integer numberOfLives = 3;
+	private Integer numberOfLives = 1;
 	private ArrayList<Integer> x = new ArrayList(Arrays.asList(500, 500, 500, 500));
-	private Boolean end = false;
-	
-	public Hero getHero() {
-		return hero;
-	}
-	public Camera getCam() {
-		return camera;
-	}
-	public ArrayList<EnergyBall> getEnergyBalls() {
-		return energyBalls;
-	}
-	public ArrayList<Foe> getFoes() {
-		return foes;
-	}
-	public Boolean getEnd() {
-		return end;
-	}
-	
+	private String screen; // welcome, main, end
+	private Boolean nextScreen = false;
+
 	public GameScene(Group root, int width, int height) {
 		super(root, width, height);
 
-		hero = new Hero(0, 250, 0, 0, 128, 128, cd + "\\src\\Mage.png", 400);
+		hero = new Hero(0, 250, 0, 0, 128, 128, cd + "\\img\\Mage.png", 400);
 		for(int i=0; i < 1; i++) {
-			Foe foe = new Foe(Math.random()*0 + 1000, 250, 2432, 384, 128, 128, cd + "\\Foe.png", 400);
+			Foe foe = new Foe(Math.random()*0 + 1000, 250, 2432, 384, 128, 128, cd + "\\img\\Foe.png", 400);
 			foes.add(foe);
 		}
 		camera = new Camera(0, 0);
 
-		skyLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\Sky.png"); background.add(skyLeft);
-		skyRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\Sky.png"); background.add(skyRight);
-		bgDecorLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\BG_Decor.png"); background.add(bgDecorLeft);
-		bgDecorRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\BG_Decor.png"); background.add(bgDecorRight);
-		mdLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\Middle_Decor.png"); background.add(mdLeft);
-		mdRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\Middle_Decor.png"); background.add(mdRight);
-		fgLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\Foreground.png"); background.add(fgLeft);
-		fgRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\Foreground.png"); background.add(fgRight);
-		groundLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\Ground.png");
-		groundRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\Ground.png");
+		skyLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\Sky.png"); background.add(skyLeft);
+		skyRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\Sky.png"); background.add(skyRight);
+		bgDecorLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\BG_Decor.png"); background.add(bgDecorLeft);
+		bgDecorRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\BG_Decor.png"); background.add(bgDecorRight);
+		mdLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\Middle_Decor.png"); background.add(mdLeft);
+		mdRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\Middle_Decor.png"); background.add(mdRight);
+		fgLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\Foreground.png"); background.add(fgLeft);
+		fgRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\Foreground.png"); background.add(fgRight);
+		groundLeft = new StaticThing(0, 0, 500, 0, 211, 400, cd + "\\img\\Ground.png");
+		groundRight = new StaticThing(0, 0, 0, 0, 711, 400, cd + "\\img\\Ground.png");
 
 
 		for(int i = 0; i<numberOfLives; i++) {
-			StaticThing heart = new StaticThing(16 + i*40, 12, 0, 0, 32, 32, cd + "\\src\\hearth.png");
+			StaticThing heart = new StaticThing(16 + i*40, 12, 0, 0, 32, 32, cd + "\\img\\hearth.png");
 			hearts.add(heart);
 		}
 
@@ -91,8 +76,13 @@ public class GameScene extends Scene {
 		});
 		
 		this.setOnMouseClicked(event -> {
-			System.out.println("Shoot");
-			hero.setNextAttitude("running & shoot");
+			if(screen == "main") {
+				System.out.println("Shoot");
+				hero.setNextAttitude("running & shoot");
+			}
+			if(screen == "end") {
+				nextScreen = true;
+			}
 		});
 	}
 
@@ -113,7 +103,7 @@ public class GameScene extends Scene {
 				hero.setInvincibility(2.5);
 				numberOfLives -= 1;
 				hearts.get(numberOfLives).getSprite().setViewport(new Rectangle2D(32, 0 , 32, 32));
-				if(numberOfLives == 0) end = true;
+				if(numberOfLives == 0) hero.setDeathAnimation(true);
 			}
 		}
 
@@ -145,5 +135,24 @@ public class GameScene extends Scene {
 			foes.get(i).getSprite().setVisible(false);
 			foes.remove((int) i);
 		}
+	}
+
+	public Hero getHero() {
+		return hero;
+	}
+	public Camera getCam() {
+		return camera;
+	}
+	public ArrayList<EnergyBall> getEnergyBalls() {
+		return energyBalls;
+	}
+	public ArrayList<Foe> getFoes() {
+		return foes;
+	}
+	public void setScreen(String screen) {
+		this.screen = screen;
+	}
+	public Boolean getNextScreen() {
+		return nextScreen;
 	}
 }
