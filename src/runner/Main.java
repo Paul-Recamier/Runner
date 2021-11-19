@@ -28,6 +28,10 @@ public class Main extends Application{
                     stop();
                     mainScreen(primaryStage);
                 }
+                if(welcomeScene.getClose()) {
+                    stop();
+                    primaryStage.close();
+                }
             }
         };
         timer.start();
