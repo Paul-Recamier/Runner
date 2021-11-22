@@ -31,7 +31,7 @@ public class Hero extends AnimatedThing{
 		deathIndex = 0;
 		deathMaximumIndex = 256 * 10;
 	}
-	
+
 	public void update(double time, double xcam, ArrayList<EnergyBall> energyBalls, Group root) {
 		if(time > 1) time = 0;
 
@@ -44,9 +44,21 @@ public class Hero extends AnimatedThing{
 				sprite.setViewport(new Rectangle2D(deathIndex, 0, 256,256));
 				deathIndex += 256;
 			}
+
+			if(attitude.equals("jumping up") || attitude.equals("jumping down")) {
+				ay -= 12000 * time;
+				vy += ay * time;
+				y -= vy * time;
+			}
+			if(y > 250) {
+				y = 250;
+				vy = 0;
+				ay = 0;
+			}
+
 			if(deathIndex == 0) sprite.setViewport(new Rectangle2D(deathIndex, 0, 256,256));
 			sprite.setX(x - xcam - 83);
-			sprite.setY(250 - 50);
+			sprite.setY(y - 50);
 		}
 		else {
 			if(accelerate) ax = 1000 - vx;

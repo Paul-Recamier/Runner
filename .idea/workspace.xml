@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d909b49d-5021-43ec-932b-c531865e61db" name="Changes" comment="Ecran de début et de fin">
-      <change afterPath="$PROJECT_DIR$/src/runner/FlyingFoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runner/AnimatedThing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/AnimatedThing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runner/Foe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Foe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runner/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/GameScene.java" afterDir="false" />
+    <list default="true" id="d909b49d-5021-43ec-932b-c531865e61db" name="Changes" comment="Ecran de début et Ennemi volant">
       <change beforePath="$PROJECT_DIR$/src/runner/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runner/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runner/WelcomeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/WelcomeScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637256206030</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Ecran de début et Ennemi volant">
+      <created>1637578022772</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1637578022772</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,7 +142,8 @@
     <MESSAGE value="Changement des sprites" />
     <MESSAGE value="Changement des sprites / Fonctionnel" />
     <MESSAGE value="Ecran de début et de fin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ecran de début et de fin" />
+    <MESSAGE value="Ecran de début et Ennemi volant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ecran de début et Ennemi volant" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
