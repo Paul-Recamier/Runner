@@ -39,6 +39,7 @@ public abstract class AnimatedThing {
         sprite.setViewport(new Rectangle2D(x,y,width,height));
         sprite.setX(posx);
         sprite.setY(posy);
+
 	}
 
 	public ImageView getSprite() {
@@ -69,4 +70,10 @@ public abstract class AnimatedThing {
 		return deathAnimation;
 	}
 
+	public Boolean getToRemove() {
+		return null;
+	}
+
+	public void update(double time, double vx, double v){
+	}
 }

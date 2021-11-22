@@ -48,19 +48,19 @@ public class Main extends Application{
 
 			@Override
 			public void handle(long now) {
-				double time = (now - past) * Math.pow(10,  -9);
+                double time = (now - past) * Math.pow(10,  -9);
                 ArrayList<EnergyBall> energyBalls = gameScene.getEnergyBalls();
 				gameScene.getHero().update(time, gameScene.getCam().getX(), energyBalls, root);
 				for(EnergyBall energyBall : energyBalls) energyBall.update(time);
-                ArrayList<Foe> foes = gameScene.getFoes();
-				for(Foe foe : foes) foe.update(time, gameScene.getCam().getVx(), gameScene.getHero().getX() - gameScene.getCam().getX());
+                ArrayList<AnimatedThing> foes = gameScene.getFoes();
+				for(AnimatedThing foe : foes) foe.update(time, gameScene.getCam().getVx(), gameScene.getHero().getX() - gameScene.getCam().getX());
 				gameScene.getCam().update(time, gameScene.getHero().getX(), gameScene.getHero().getDeathAnimation());
-				gameScene.update(time);
+				gameScene.update(time, root);
 				past = now;
 
                 if(gameScene.getHero().getEnd()){
                     stop();
-                    root.getChildren().add(new StaticThing(100,100,0,0,400,206, System.getProperty("user.dir") + "/img/Game_Over.png").getSprite());
+                    root.getChildren().add(new StaticThing(100,100,0,0,400,206, "file:img/Game_Over.png").getSprite());
                     gameScene.setScreen("end");
                     endScreen(gameScene, primaryStage);
                 }

@@ -15,14 +15,14 @@ public class WelcomeScene extends Scene {
 
     public WelcomeScene(Group root, int width, int height) {
         super(root, width, height);
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, System.getProperty("user.dir") + "/img/Sky.png").getSprite());
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, System.getProperty("user.dir") + "/img/BG_Decor.png").getSprite());
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, System.getProperty("user.dir") + "/img/Middle_Decor.png").getSprite());
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, System.getProperty("user.dir") + "/img/Foreground.png").getSprite());
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, System.getProperty("user.dir") + "/img/Ground.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/Sky.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/BG_Decor.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/Middle_Decor.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/Foreground.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/Ground.png").getSprite());
 
-        root.getChildren().add(new StaticThing(220,200,0,0,163,60,System.getProperty("user.dir") + "/img/Button.png").getSprite());
-        root.getChildren().add(new StaticThing(220,280,0,0,163,60,System.getProperty("user.dir") + "/img/Button.png").getSprite());
+        root.getChildren().add(new StaticThing(220,200,0,0,163,60,"file:img/Button.png").getSprite());
+        root.getChildren().add(new StaticThing(220,280,0,0,163,60,"file:img/Button.png").getSprite());
         Rectangle2D playButton = new Rectangle2D(220,200,163,60);
         Rectangle2D exitButton = new Rectangle2D(220,280,163,60);
         Text play = new Text(244,247,"PLAY");

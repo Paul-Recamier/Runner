@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d909b49d-5021-43ec-932b-c531865e61db" name="Changes" comment="Ecran de début et de fin">
+      <change afterPath="$PROJECT_DIR$/src/runner/FlyingFoe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/AnimatedThing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/AnimatedThing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/Foe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Foe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runner/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runner/WelcomeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/WelcomeScene.java" afterDir="false" />
     </list>
@@ -38,7 +44,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Java/javafx-sdk-17.0.1/lib" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="D:/Program Files/JavaFX/javafx-sdk-17.0.0.1/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -49,7 +56,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="15" />
       <option name="MAIN_CLASS_NAME" value="runner.Main" />
       <module name="Runner" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\paulr\Java\javafx-sdk-17.0.1\lib&quot; --add-modules javafx.controls" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\Program Files\JavaFX\javafx-sdk-17.0.0.1\lib&quot; --add-modules javafx.controls" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

@@ -49,7 +49,7 @@ public class Foe extends AnimatedThing{
 		}
 	}
 
-
+	@Override
 	public Boolean getToRemove() {
 		return toRemove;
 	}
