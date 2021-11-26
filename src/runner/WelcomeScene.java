@@ -15,11 +15,11 @@ public class WelcomeScene extends Scene {
 
     public WelcomeScene(Group root, int width, int height) {
         super(root, width, height);
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/Sky.png").getSprite());
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/BG_Decor.png").getSprite());
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/Middle_Decor.png").getSprite());
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/Foreground.png").getSprite());
-        root.getChildren().add(new StaticThing(0,0,0,0,711,400, "file:img/Ground.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,50,0,711,400, "file:img/Sky.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,50,0,711,400, "file:img/BG_Decor.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,50,0,711,400, "file:img/Middle_Decor.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,50,0,711,400, "file:img/Foreground.png").getSprite());
+        root.getChildren().add(new StaticThing(0,0,50,0,711,400, "file:img/Ground.png").getSprite());
 
         root.getChildren().add(new StaticThing(220,200,0,0,163,60,"file:img/Button.png").getSprite());
         root.getChildren().add(new StaticThing(220,280,0,0,163,60,"file:img/Button.png").getSprite());
@@ -29,6 +29,13 @@ public class WelcomeScene extends Scene {
         play.setFont(new Font("Century Gothic Gras", 50));
         Text exit = new Text(255,327,"EXIT");
         exit.setFont(new Font("Century Gothic Gras", 50));
+        Text title = new Text(63,150,"RUNNER");
+        title.setFont(new Font("Century Gothic Gras", 120));
+        title.setFill(Color.GOLD);
+        Text outlineTitle = new Text(67,154,"RUNNER");
+        outlineTitle.setFont(new Font("Century Gothic Gras", 120));
+        root.getChildren().add(outlineTitle);
+        root.getChildren().add(title);
         root.getChildren().add(play);
         root.getChildren().add(exit);
 

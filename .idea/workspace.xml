@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Runner:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d909b49d-5021-43ec-932b-c531865e61db" name="Changes" comment="Ecran de début et Ennemi volant">
-      <change beforePath="$PROJECT_DIR$/src/runner/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/Hero.java" afterDir="false" />
+    <list default="true" id="d909b49d-5021-43ec-932b-c531865e61db" name="Changes" comment="Animation de mort en l'air">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runner/WelcomeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runner/WelcomeScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +45,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="D:/Program Files/JavaFX/javafx-sdk-17.0.0.1/lib" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
@@ -119,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637578022772</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Animation de mort en l'air">
+      <created>1637578634620</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1637578634620</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,7 +157,8 @@
     <MESSAGE value="Changement des sprites / Fonctionnel" />
     <MESSAGE value="Ecran de début et de fin" />
     <MESSAGE value="Ecran de début et Ennemi volant" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ecran de début et Ennemi volant" />
+    <MESSAGE value="Animation de mort en l'air" />
+    <option name="LAST_COMMIT_MESSAGE" value="Animation de mort en l'air" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
