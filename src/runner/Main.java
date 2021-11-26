@@ -3,8 +3,12 @@ package runner;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Main extends Application{
@@ -13,12 +17,24 @@ public class Main extends Application{
 	
     public void start(Stage primaryStage){
         primaryStage.setTitle("Runner");
-        welcomeScreen(primaryStage);
+        Media musicMedia = new Media(new File("music/A Misty Sea of Forest.mp3").toURI().toString());
+        MediaPlayer musicPlayer = new MediaPlayer(musicMedia);
+        musicPlayer.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                musicPlayer.seek(Duration.ZERO);
+                musicPlayer.play();
+            }
+        });
+        musicPlayer.setVolume(0.1);
+        welcomeScreen(primaryStage, musicPlayer);
     }
 
-    public void welcomeScreen(Stage primaryStage) {
+    public void welcomeScreen(Stage primaryStage, MediaPlayer musicPlayer) {
+
+        musicPlayer.play();
         Group root = new Group();
-        WelcomeScene welcomeScene = new WelcomeScene(root, 600, 400);
+        WelcomeScene welcomeScene = new WelcomeScene(root, 600, 400, musicPlayer);
         primaryStage.setScene(welcomeScene);
         primaryStage.show();
         AnimationTimer timer = new AnimationTimer() {
@@ -26,7 +42,7 @@ public class Main extends Application{
             public void handle(long l) {
                 if(welcomeScene.getNextScreen()) {
                     stop();
-                    mainScreen(primaryStage);
+                    mainScreen(primaryStage, musicPlayer);
                 }
                 if(welcomeScene.getClose()) {
                     stop();
@@ -37,7 +53,7 @@ public class Main extends Application{
         timer.start();
     }
 
-    public void mainScreen(Stage primaryStage){
+    public void mainScreen(Stage primaryStage, MediaPlayer musicPlayer){
         Group root = new Group();
         GameScene gameScene = new GameScene(root, 600, 400);
         gameScene.setScreen("main");
@@ -62,7 +78,7 @@ public class Main extends Application{
                     stop();
                     root.getChildren().add(new StaticThing(100,100,0,0,400,206, "file:img/Game_Over.png").getSprite());
                     gameScene.setScreen("end");
-                    endScreen(gameScene, primaryStage);
+                    endScreen(gameScene, primaryStage, musicPlayer);
                 }
 
             }
@@ -71,13 +87,13 @@ public class Main extends Application{
         timer.start();
     }
 
-    private void endScreen(GameScene gameScene, Stage primaryStage) {
+    private void endScreen(GameScene gameScene, Stage primaryStage, MediaPlayer musicPlayer) {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
                 if(gameScene.getNextScreen()) {
                     stop();
-                    welcomeScreen(primaryStage);
+                    welcomeScreen(primaryStage, musicPlayer);
                 }
             }
         };
